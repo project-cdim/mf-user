@@ -16,7 +16,7 @@
 
 import { DataTableColumn } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
-import { TextInputForTableFilter } from '@/shared-modules/components';
+import { LongSentences, TextInputForTableFilter } from '@/shared-modules/components';
 import { APIRole } from '@/types';
 
 import { RoleFilter } from '@/utils/hooks/useRoleFilter';
@@ -46,6 +46,7 @@ export const useColumns: UseColumns = (roleFilter) => {
         />
       ),
       filtering: roleFilter.query.name !== '',
+      noWrap: true,
     },
     {
       accessor: 'description',
@@ -59,6 +60,7 @@ export const useColumns: UseColumns = (roleFilter) => {
         />
       ),
       filtering: roleFilter.query.description !== '',
+      render: ({ description }) => <LongSentences text={description} />,
     },
   ];
   return defaultCol;

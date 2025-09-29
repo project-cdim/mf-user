@@ -19,7 +19,12 @@
 import { Group, Stack } from '@mantine/core';
 import { DataTableColumn } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
-import { TextInputForTableFilter, MultiSelectForTableFilter, PageLink } from '@/shared-modules/components';
+import {
+  TextInputForTableFilter,
+  MultiSelectForTableFilter,
+  PageLink,
+  LongSentences,
+} from '@/shared-modules/components';
 
 import { APPUser } from '@/types';
 
@@ -64,10 +69,10 @@ export const useColumns: UseColumns = (userFilter) => {
       filtering: userFilter.query.username !== '' || userFilter.query.enabled.length > EMPTY,
       render: ({ id, enabled, username }) => {
         return (
-          <Group gap={5}>
+          <Group gap={5} wrap='nowrap'>
             <EnableToIcon isEnabled={enabled} />
             <PageLink title={t('User Details')} path='/cdim/user-detail' query={{ id }}>
-              {username}
+              <LongSentences text={username} />
             </PageLink>
           </Group>
         );
@@ -85,6 +90,7 @@ export const useColumns: UseColumns = (userFilter) => {
         />
       ),
       filtering: userFilter.query.lastName !== '',
+      render: ({ lastName }) => <LongSentences text={lastName} />,
     },
     {
       accessor: 'firstName',
@@ -98,6 +104,7 @@ export const useColumns: UseColumns = (userFilter) => {
         />
       ),
       filtering: userFilter.query.firstName !== '',
+      render: ({ firstName }) => <LongSentences text={firstName} />,
     },
     {
       accessor: 'roles',
@@ -106,7 +113,7 @@ export const useColumns: UseColumns = (userFilter) => {
       render: ({ roles }) => (
         <Stack gap={0}>
           {roles.sort().map((roleId: string) => (
-            <div key={roleId}>{roleId}</div>
+            <LongSentences key={roleId} text={roleId} />
           ))}
         </Stack>
       ),
