@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -63,7 +63,7 @@ export const useUserList = () => {
     usersData.forEach((users, idx) => {
       const roleName = ASSIGNABLE_ROLES[idx];
       users.forEach((user) => {
-        if (!usernameToUserData[user.username]) {
+        if (usernameToUserData[user.username] === undefined) {
           usernameToUserData[user.username] = {
             ...{ ...user, lastName: user.lastName || '', firstName: user.firstName || '' },
             roles: [roleName],

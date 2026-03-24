@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -33,13 +33,12 @@ import { useColumns } from '@/utils/user-list';
 const UserList = () => {
   const t = useTranslations();
 
-  const mswInitializing = false;
   const breadcrumbs = [{ title: t('User Management') }, { title: t('Users') }];
 
   // Custom hook for fetching user list data
   const { data: formattedData, mutate, errors, isValidating } = useUserList();
 
-  const loading = useLoading(isValidating || mswInitializing);
+  const loading = useLoading(isValidating);
 
   /** Custom hook for filter */
   const userFilter = useUserFilter(formattedData);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -185,7 +185,7 @@ describe('useColumns', () => {
     render(rolesColumn.render(dummyAPPUser, 0) as ReactElement);
 
     dummyAPPUser.roles.forEach((role) => {
-      expect(screen.getByText(role)).toBeInTheDocument();
+      expect(screen.getByText(role, { exact: false })).toBeInTheDocument();
     });
   });
 

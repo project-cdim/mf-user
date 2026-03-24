@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -68,7 +68,7 @@ const useRoles = (
   filteredRoles: APIRoles,
   rolesErrors: (object | undefined)[],
   rolesIsValidating: boolean,
-  rolesMutate: () => void
+  rolesMutate: () => void,
 ] => {
   // List of composite role IDs used for recursive acquisition of permission roles
   const [compositeRolesID, setcompositeRolesID] = useState<string[]>([]);
@@ -153,7 +153,7 @@ const useAssignedRoles = (
   assignedRoles: APIRoles,
   assignedRolesErrors: (object | undefined)[],
   assignedRolesIsValidating: boolean,
-  assignedRolesMutate: () => void
+  assignedRolesMutate: () => void,
 ] => {
   // Function to sort by role name
   const compareFn = (a: APIRole, b: APIRole) => {

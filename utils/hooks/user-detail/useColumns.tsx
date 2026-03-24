@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -16,7 +16,7 @@
 
 import { DataTableColumn } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
-import { LongSentences, TextInputForTableFilter } from '@/shared-modules/components';
+import { TextInputForTableFilter } from '@/shared-modules/components';
 import { APIRole } from '@/types';
 
 import { RoleFilter } from '@/utils/hooks/useRoleFilter';
@@ -60,7 +60,7 @@ export const useColumns: UseColumns = (roleFilter) => {
         />
       ),
       filtering: roleFilter.query.description !== '',
-      render: ({ description }) => <LongSentences text={description} />,
+      render: ({ description }) => <pre>{description}</pre>,
     },
   ];
   return defaultCol;

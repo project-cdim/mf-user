@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -16,7 +16,7 @@
 
 'use client';
 
-import { Group, Stack } from '@mantine/core';
+import { Box, Group } from '@mantine/core';
 import { DataTableColumn } from 'mantine-datatable';
 import { useTranslations } from 'next-intl';
 import {
@@ -24,6 +24,7 @@ import {
   MultiSelectForTableFilter,
   PageLink,
   LongSentences,
+  BadgeWithInfo,
 } from '@/shared-modules/components';
 
 import { APPUser } from '@/types';
@@ -49,6 +50,7 @@ export const useColumns: UseColumns = (userFilter) => {
       accessor: 'username',
       title: t('Username'),
       sortable: true,
+      width: '20%',
       filter: (
         <>
           <TextInputForTableFilter
@@ -70,7 +72,9 @@ export const useColumns: UseColumns = (userFilter) => {
       render: ({ id, enabled, username }) => {
         return (
           <Group gap={5} wrap='nowrap'>
-            <EnableToIcon isEnabled={enabled} />
+            <Box style={{ flex: '0 0 auto', lineHeight: 0 }}>
+              <EnableToIcon isEnabled={enabled} />
+            </Box>
             <PageLink title={t('User Details')} path='/cdim/user-detail' query={{ id }}>
               <LongSentences text={username} />
             </PageLink>
@@ -90,6 +94,7 @@ export const useColumns: UseColumns = (userFilter) => {
         />
       ),
       filtering: userFilter.query.lastName !== '',
+      width: '20%',
       render: ({ lastName }) => <LongSentences text={lastName} />,
     },
     {
@@ -104,18 +109,21 @@ export const useColumns: UseColumns = (userFilter) => {
         />
       ),
       filtering: userFilter.query.firstName !== '',
+      width: '20%',
       render: ({ firstName }) => <LongSentences text={firstName} />,
     },
     {
       accessor: 'roles',
       title: t('Role'),
       sortable: true,
+      width: '40%',
       render: ({ roles }) => (
-        <Stack gap={0}>
-          {roles.sort().map((roleId: string) => (
-            <LongSentences key={roleId} text={roleId} />
-          ))}
-        </Stack>
+        <Group gap='xs' wrap='nowrap' align='baseline'>
+          <Box style={{ flex: '0 0 auto', lineHeight: 0 }}>
+            <BadgeWithInfo label={t('Number of assigned roles')} number={roles.length} />
+          </Box>
+          <LongSentences text={roles.sort().join(', ')} />
+        </Group>
       ),
       filter: (
         <MultiSelectForTableFilter

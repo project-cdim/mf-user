@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,9 +14,11 @@
  * under the License.
  */
 
+import sharedConfig from '../shared-modules/stories/config/main';
 import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
+  ...sharedConfig,
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
@@ -40,4 +42,5 @@ const config: StorybookConfig = {
     autodocs: 'tag',
   },
 };
+
 export default config;
