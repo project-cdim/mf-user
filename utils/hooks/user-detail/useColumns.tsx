@@ -45,6 +45,7 @@ export const useColumns: UseColumns = (roleFilter) => {
           setValue={roleFilter.setQuery.name}
         />
       ),
+      width: `20%`,
       filtering: roleFilter.query.name !== '',
       noWrap: true,
     },

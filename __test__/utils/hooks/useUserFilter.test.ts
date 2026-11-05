@@ -1,5 +1,5 @@
 /*
- * Copyright 2025 NEC Corporation.
+ * Copyright 2025-2026 NEC Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -71,7 +71,7 @@ describe('useUserFilter custom hook', () => {
       jest.advanceTimersByTime(300);
     });
     expect(view.result.current.query.username).toBe('user0');
-    expect(view.result.current.filteredRecords).toHaveLength(9); // user01 ～ user09
+    expect(view.result.current.filteredRecords).toHaveLength(9); // user01 - user09
     jest.useRealTimers();
   });
   test('setQuery.lastName() works correctly', async () => {

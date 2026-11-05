@@ -1,5 +1,13 @@
 # Changelog 0.2
 
+## [0.2.2](https://github.com/project-cdim/mf-user/compare/v0.2.1...v0.2.2) - 2026-11-05
+
+The changes from v0.2.1 are as follows:
+
+### Other Changes
+
+- Adjust table styles
+
 ## [0.2.1](https://github.com/project-cdim/mf-user/compare/v0.2.0...v0.2.1) - 2026-03-26
 
 The changes from v0.2.0 are as follows:
